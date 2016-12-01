@@ -7,6 +7,8 @@ import com.blowrunning.game.Blowrunning;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new Blowrunning(), config);
+		config.width = 700;
+                config.height = 800; 
+                new LwjglApplication(new Blowrunning(), config);
 	}
 }
