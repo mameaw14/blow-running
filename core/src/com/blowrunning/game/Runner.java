@@ -5,10 +5,20 @@
  */
 package com.blowrunning.game;
 
+import com.badlogic.gdx.math.Vector2;
+
 /**
  *
  * @author natachit
  */
 public class Runner {
+    private Vector2 position;
     
+    public Runner (int x, int y, World world) {
+        position = new Vector2 (x, y);
+    }
+    
+    public void updatePosition(){
+        position.x++;
+    }
 }
