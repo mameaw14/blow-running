@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.blowrunning.game;
 
-/**
- *
- * @author natachit
- */
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 public class World {
+    public SpriteBatch batch;
+    private Runner runner1, runner2;
+    private BlowrunningGame blowrunningGame;
     
+    World (BlowrunningGame blowrunningGame){
+        runner1 = new Runner(10, 600, this);
+        runner2 = new Runner(10, 600, this);
+        this.blowrunningGame = blowrunningGame;
+    }
 }
