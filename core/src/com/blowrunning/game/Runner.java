@@ -18,7 +18,11 @@ public class Runner {
         position = new Vector2 (x, y);
     }
     
-    public void updatePosition(){
+    public void updatePosition() {
         position.x++;
+    }
+    
+    public Vector2 getPosition() {
+        return position;
     }
 }
