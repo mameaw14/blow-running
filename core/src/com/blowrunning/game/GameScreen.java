@@ -11,6 +11,7 @@ public class GameScreen extends ScreenAdapter {
 	SpriteBatch batch;
 	Texture img;
   World world;
+  Render render;
   
   GameScreen(BlowrunningGame blowrunningGame) {
     world = new World(blowrunningGame);
@@ -23,6 +24,7 @@ public class GameScreen extends ScreenAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
+    world.render(delta);
 		batch.end();
 	}
 	
