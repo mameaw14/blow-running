@@ -12,13 +12,14 @@ public class World {
     ArrayList<Entity> entities; 
     
     World (BlowrunningGame blowrunningGame){
-        runner1 = new Runner(10, 600, this);
-        runner2 = new Runner(10, 600, this);
-        map = new Map();
-        this.blowrunningGame = blowrunningGame;
-        entities.add((Entity) runner1);
-        entities.add((Entity) runner2);
-        entities.add((Entity) map);
+      entities = new ArrayList<Entity>();
+      runner1 = new Runner(10, 600, this);
+      runner2 = new Runner(10, 600, this);
+      map = new Map();
+      this.blowrunningGame = blowrunningGame;
+      entities.add((Entity) runner1);
+      entities.add((Entity) runner2);
+      entities.add((Entity) map);
     }
     
     public void render(float delta) {
