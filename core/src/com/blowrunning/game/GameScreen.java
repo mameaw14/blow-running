@@ -3,6 +3,7 @@ package com.blowrunning.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -14,6 +15,7 @@ public class GameScreen extends ScreenAdapter {
 	Texture img, bg, statusbar;
         World world;
         Runner runner1, runner2;
+        Sound themeSound, startSound;
   
     GameScreen(BlowrunningGame blowrunningGame) {
         world = new World(blowrunningGame);
@@ -25,6 +27,10 @@ public class GameScreen extends ScreenAdapter {
         sprite = new Sprite(bg);
         sttb = new Sprite(statusbar);
         sprite.setOriginCenter();
+        startSound = Gdx.audio.newSound(Gdx.files.internal("start.wav"));
+        startSound.play();
+        themeSound = Gdx.audio.newSound(Gdx.files.internal("sound.mp3"));
+        themeSound.loop();
     }
   
 	@Override
