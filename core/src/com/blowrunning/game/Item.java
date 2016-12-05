@@ -30,5 +30,9 @@ public class Item implements Entity {
     }
     elapse_time -= delta;
   }
+  
+  public boolean isActivated() {
+    return is_activated;
+  }
 
 }

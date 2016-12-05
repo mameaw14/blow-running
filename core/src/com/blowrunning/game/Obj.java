@@ -30,7 +30,7 @@ public class Obj{
   public void render(float delta, float speed) {
     if (isOut) return;
     if ("lane_item".equals(str) && sprite.getY() <= 250) {
-      new LaneItem(lane - 2);
+      World.getRunner(lane - 2).getLaneItem();
       isOut = true;
       return;
     }

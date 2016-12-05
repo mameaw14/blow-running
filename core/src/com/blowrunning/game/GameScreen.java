@@ -58,7 +58,7 @@ public class GameScreen extends ScreenAdapter {
       runner2.updatePosition();
     }
     if (Gdx.input.isKeyPressed(Input.Keys.S)) { //activate lane1 item
-  
+      runner1.activateLaneItem();
     }
     if (Gdx.input.isKeyPressed(Input.Keys.K)) { //activate lane2 item
   

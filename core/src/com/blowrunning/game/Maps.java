@@ -24,7 +24,8 @@ public class Maps implements Entity {
     map.put(400, new Props("flag"));
     map.put(600, new Props("flag"));
     map.put(800, new Props("flag"));
-    map.put(300, new Props("lane_item"));
+    map.put(1000, new Props("flag"));
+    map.put(200, new Props("lane_item"));
   }
   
   @Override
@@ -34,11 +35,11 @@ public class Maps implements Entity {
     dis1 = world.getRunner(1).getDistance();
     dis2 = world.getRunner(2).getDistance();
     for (int key : map.keySet()) {
-      if(key < dis1) {
+      if(key < dis1 + 100) {
         Props props = map.get(key);
         props.getObj(1).render(delta, speed);
       } 
-      if (key < dis2) {
+      if (key < dis2 + 100) {
         Props props = map.get(key);
         props.getObj(2).render(delta, speed);
       }
