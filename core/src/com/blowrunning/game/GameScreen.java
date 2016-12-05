@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class GameScreen extends ScreenAdapter {
 	SpriteBatch batch;
 	Texture img;
-  Render render;
   World world;
   Runner runner1, runner2;
   
