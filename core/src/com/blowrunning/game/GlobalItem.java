@@ -2,6 +2,6 @@ package com.blowrunning.game;
 
 public class GlobalItem extends Item{
   GlobalItem() {
-    super();
+    super("global_item.png");
   }
 }

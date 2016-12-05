@@ -4,7 +4,7 @@ public class LaneItem extends Item{
   int lane;
   
   LaneItem(int lane) {
-    super();
+    super("lane_item.png");
     this.lane = lane;
   }
 }

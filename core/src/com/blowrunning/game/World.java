@@ -16,10 +16,12 @@ public class World {
       runner1 = new Runner(10, 600, this);
       runner2 = new Runner(10, 600, this);
       map = new Map();
+      Item global = new GlobalItem();
       this.blowrunningGame = blowrunningGame;
       entities.add((Entity) runner1);
       entities.add((Entity) runner2);
       entities.add((Entity) map);
+      entities.add((Entity) global);
     }
     
     public void render(float delta) {

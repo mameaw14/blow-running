@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class BlowrunningGame extends Game {
-	SpriteBatch batch;
+	public static SpriteBatch batch;
 	
 	@Override
 	public void create () {
