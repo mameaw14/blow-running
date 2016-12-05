@@ -27,4 +27,14 @@ public class World {
         x.render(delta);
       }
     }
+    
+    Runner getRunner(int x) {
+        if (x == 1) {
+            return runner1;
+        }
+        else {
+            return runner2;
+        }
+    }
+
 }

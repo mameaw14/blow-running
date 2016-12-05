@@ -13,8 +13,10 @@ public class Runner implements Entity {
         position.x++;
     }
     
-    @Override
     public void render(float delta) {
       
+    }
+    public Vector2 getPosition() {
+        return position;
     }
 }
