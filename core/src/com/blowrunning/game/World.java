@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class World {
     public SpriteBatch batch;
-    private Runner runner1, runner2;
+    static private Runner runner1, runner2;
     private BlowrunningGame blowrunningGame;
     private Maps map;
     ArrayList<Entity> entities; 
@@ -40,7 +40,7 @@ public class World {
         }
     }
     
-    Runner getRunner(int x) {
+    public static Runner getRunner(int x) {
         if (x == 1) {
             return runner1;
         }
