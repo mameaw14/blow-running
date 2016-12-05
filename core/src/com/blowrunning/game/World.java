@@ -13,8 +13,8 @@ public class World {
     
     World (BlowrunningGame blowrunningGame){
       entities = new ArrayList<Entity>();
-      runner1 = new Runner(40, 700, this, 1);
-      runner2 = new Runner(40, 700, this, 2);
+      runner1 = new Runner(36, 761, this, 1);
+      runner2 = new Runner(36, 761, this, 2);
       map = new Map();
       Item global = new LaneItem(1);
       this.blowrunningGame = blowrunningGame;
@@ -25,9 +25,19 @@ public class World {
     }
     
     public void render(float delta) {
+      update();
       for(Entity x : entities) {
         x.render(delta);
       }
+    }
+    
+    public void update(){ 
+        if (runner1.checkDistance() == 1) {
+            
+        }
+        else if (runner2.checkDistance() == 1) {
+            
+        }
     }
     
     Runner getRunner(int x) {
