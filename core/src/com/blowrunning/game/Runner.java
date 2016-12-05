@@ -69,7 +69,14 @@ public class Runner implements Entity {
     if (laneitem != null) {
       world.entities.remove(laneitem);
       //.... what to do
+      
+      System.out.println("runner " + number + " activate lane item");
       laneitem = null;
     }
+  }
+  
+  public void activateGlobalItem() {
+    //... what to do
+    System.out.println("runner " + number + " activate global item");
   }
 }

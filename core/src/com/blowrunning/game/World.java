@@ -9,6 +9,7 @@ public class World {
     private static Runner runner1, runner2;
     private BlowrunningGame blowrunningGame;
     private Maps map;
+    GlobalItem globalItem;
     ArrayList<Entity> entities; 
     
     World (BlowrunningGame blowrunningGame){
@@ -17,25 +18,25 @@ public class World {
       runner2 = new Runner(36, 661, this, 2);
       map = new Maps(this);
       this.blowrunningGame = blowrunningGame;
-      entities.add((Entity) runner1);
-      entities.add((Entity) runner2);
-      entities.add((Entity) map);
+      entities.add(runner1);
+      entities.add(runner2);
+      entities.add(map);
     }
     
     public void render(float delta) {
-      updateItem();
-      for(Entity x : entities) {
+      randomGlobalItem();
+      for (Entity x : entities) {
         x.render(delta);
       }
     }
     
-    public void updateItem(){ 
-        if (runner1.checkDistance() == 1) {
-            
-        }
-        else if (runner2.checkDistance() == 1) {
-            
-        }
+    public void randomGlobalItem(){ 
+      if (globalItem != null) return;
+      if (Math.random() < 0.01 ) {
+        System.out.println("init Glob item");
+        globalItem = new GlobalItem();
+        entities.add(globalItem);
+      }
     }
     
     public static Runner getRunner(int x) {
@@ -45,5 +46,13 @@ public class World {
         else {
             return runner2;
         }
+    }
+    
+    public void activateGlobalItem(int number) {
+      if (globalItem != null) {
+        getRunner(number).activateGlobalItem();
+        entities.remove(globalItem);
+        globalItem = null;
+      }
     }
 }
