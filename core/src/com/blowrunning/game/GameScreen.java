@@ -63,9 +63,6 @@ public class GameScreen extends ScreenAdapter {
         if (Gdx.input.isKeyPressed(Input.Keys.H)) { //runner2 activate global item
     
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
-            //System.out.println(runner1.getPosition().x+", "+runner1.getPosition().y);
-        }
     }
 }
 
