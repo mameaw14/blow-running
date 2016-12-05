@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class BlowrunningGame extends Game {
 	public static SpriteBatch batch;
         public static final int WIDTH = 700;
-        public static final int HEIGHT = 800;
+        public static final int HEIGHT = 700;
 	
 	@Override
 	public void create () {

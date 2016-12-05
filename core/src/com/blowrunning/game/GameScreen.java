@@ -24,6 +24,7 @@ public class GameScreen extends ScreenAdapter {
         statusbar = new Texture("statusbar.png");
         sprite = new Sprite(bg);
         sttb = new Sprite(statusbar);
+        sprite.setOriginCenter();
     }
   
 	@Override
@@ -33,7 +34,6 @@ public class GameScreen extends ScreenAdapter {
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             batch.begin();
             batch.draw(bg, 0, 0);
-            batch.draw(sttb, 0, 680);
             world.render(delta);
             batch.end();
 	}
