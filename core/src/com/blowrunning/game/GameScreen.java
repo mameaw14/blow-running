@@ -10,8 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen extends ScreenAdapter {
 	SpriteBatch batch;
-        Sprite sprite;
-	Texture img, bg;
+        Sprite sprite, sttb;
+	Texture img, bg, statusbar;
         World world;
         Runner runner1, runner2;
   
@@ -21,7 +21,9 @@ public class GameScreen extends ScreenAdapter {
         runner1 = world.getRunner(1);
         runner2 = world.getRunner(2);
         bg = new Texture("bg.png");
-        sprite = new Sprite (bg);
+        statusbar = new Texture("statusbar.png");
+        sprite = new Sprite(bg);
+        sttb = new Sprite(statusbar);
     }
   
 	@Override
@@ -31,6 +33,7 @@ public class GameScreen extends ScreenAdapter {
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             batch.begin();
             batch.draw(bg, 0, 0);
+            batch.draw(sttb, 0, 680);
             world.render(delta);
             batch.end();
 	}
@@ -65,3 +68,4 @@ public class GameScreen extends ScreenAdapter {
         }
     }
 }
+
