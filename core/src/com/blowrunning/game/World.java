@@ -13,8 +13,8 @@ public class World {
     
     World (BlowrunningGame blowrunningGame){
       entities = new ArrayList<Entity>();
-      runner1 = new Runner(10, 600, this);
-      runner2 = new Runner(10, 600, this);
+      runner1 = new Runner(40, 700, this, 1);
+      runner2 = new Runner(40, 700, this, 2);
       map = new Map();
       Item global = new GlobalItem();
       this.blowrunningGame = blowrunningGame;
