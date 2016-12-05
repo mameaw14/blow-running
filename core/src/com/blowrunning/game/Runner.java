@@ -42,8 +42,12 @@ public class Runner implements Entity {
         return position;
     }
     
+    public int getDistance() {
+        return (int)(position.x * 1.428);
+    }
+    
     public int checkDistance() {
-        if (position.x * 1.428 % 200 == 0) {     //add item   
+        if (getDistance() % 200 == 0) {     //add item   
             return 1;
         }
         else if (position.x == 622) {            //finished line
