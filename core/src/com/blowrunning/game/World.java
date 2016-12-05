@@ -16,7 +16,7 @@ public class World {
       runner1 = new Runner(10, 600, this);
       runner2 = new Runner(10, 600, this);
       map = new Map();
-      Item global = new GlobalItem();
+      Item global = new LaneItem(1);
       this.blowrunningGame = blowrunningGame;
       entities.add((Entity) runner1);
       entities.add((Entity) runner2);

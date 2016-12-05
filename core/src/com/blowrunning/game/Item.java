@@ -7,9 +7,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Item implements Entity {
   
   int VALID_TIME = 5;
-  Sprite sprite;
+  protected Sprite sprite;
   boolean is_activated = false;
   SpriteBatch batch;
+  float elapse_time;
   
   Item(String imgStr) {
     this.batch = BlowrunningGame.batch;
@@ -17,12 +18,17 @@ public class Item implements Entity {
     
     sprite = new Sprite(img);
     sprite.setOriginCenter();
-    sprite.setPosition(400,500);
+    sprite.setPosition(BlowrunningGame.WIDTH / 2 - sprite.getOriginX(), 500);
+    elapse_time = VALID_TIME;
   }
   
   @Override
   public void render(float delta) {
-    sprite.draw(batch);
+    if (elapse_time <= 3 && (int)(elapse_time*10) % 5 == 0) ;
+    else {
+      sprite.draw(batch);
+    }
+    elapse_time -= delta;
   }
 
 }
