@@ -31,14 +31,26 @@ public class McuWithPeriBoard extends McuBoard
       }
         return ret[0] == 1;
     }
-    public boolean getUpperSound()
+    public boolean getUpperSound(int x)
     {
-        byte[] ret = this.read(RQ_GET_UPPER_SOUND, (short) 0, (short) 0);
+      byte[] ret;
+      if (x==1) {
+        ret = this.read(RQ_GET_UPPER_SOUND, (short) 0, (short) 0);
+      }
+      else {
+        ret = this.read(RQ_GET_UPPER_SOUND2, (short) 0, (short) 0);
+      }
         return ret[0] == 1;
     }
-    public boolean getLowerSound()
+    public boolean getLowerSound(int x)
     {
-        byte[] ret = this.read(RQ_GET_LOWER_SOUND, (short) 0, (short) 0);
+      byte[] ret;
+      if (x==1) {
+        ret = this.read(RQ_GET_LOWER_SOUND, (short) 0, (short) 0);
+      }
+      else {
+        ret = this.read(RQ_GET_LOWER_SOUND2, (short) 0, (short) 0);
+      }
         return ret[0] == 1;
     }
 }
