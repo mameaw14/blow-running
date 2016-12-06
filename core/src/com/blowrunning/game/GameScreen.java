@@ -55,15 +55,13 @@ public class GameScreen extends ScreenAdapter {
   }
 
   private void input (float delta) {
-    float speed = peri.getSpeed();
-    System.out.println(speed);
-    runner1.updatePosition(speed);
-    runner2.updatePosition(speed);
+    runner1.updatePosition(peri.getSpeed(1));
+    runner2.updatePosition(peri.getSpeed(2));
     if (Gdx.input.isKeyPressed(Input.Keys.A)) { //runner1 run
-      runner1.updatePosition(speed);
+      runner1.updatePosition(1);
     }
     if (Gdx.input.isKeyPressed(Input.Keys.L)) { //runner2 run
-      runner2.updatePosition(speed);
+      runner2.updatePosition(1);
     }
     if (Gdx.input.isKeyPressed(Input.Keys.S)) { //activate lane1 item
       runner1.activateLaneItem();

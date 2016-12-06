@@ -11,7 +11,7 @@ public class TestPeri
     public TestPeri()
     {
         McuBoard.initUsb();
-
+        p = new LinkedList[2];
         try
         {
         	Device[] devices = McuBoard.findBoards();
@@ -45,7 +45,6 @@ public class TestPeri
     
     int sum(int i) {
       i = i - 1;
-      if(p[i].size() > 25) p[i].removeFirst();
       int sum = 0;
       for (boolean x: p[i]) {
         if(x) sum++;
@@ -58,13 +57,11 @@ public class TestPeri
     }
     
     public void update() {
-      boolean sw1 = peri.getLowerSound(1);
-      p[0].add(sw1);
-      sum(0);
-      
-      boolean sw2 = peri.getLowerSound(2);
-      p[1].add(sw2);
-      sum(1);
+      for(int i = 0; i < 2; i++) {
+        boolean sw = peri.getLowerSound(i + 1);
+        p[i].removeFirst();
+        p[i].add(sw);
+      }
     }
     
     public void dispose() {
