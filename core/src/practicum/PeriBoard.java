@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import org.usb4java.Device;
 
-public class TestPeri
+public class PeriBoard
 {
     McuWithPeriBoard peri;
     LinkedList<Boolean>[] p;
-    public TestPeri()
+    public PeriBoard()
     {
         McuBoard.initUsb();
         p = new LinkedList[2];
@@ -58,7 +58,7 @@ public class TestPeri
     
     public void update() {
       for(int i = 0; i < 2; i++) {
-        boolean sw = peri.getLowerSound(i + 1);
+        boolean sw = peri.getUpperSound(i + 1);
         p[i].removeFirst();
         p[i].add(sw);
       }
@@ -67,7 +67,12 @@ public class TestPeri
     public void dispose() {
       McuBoard.cleanupUsb();
     }
+    
     public boolean getSwitch(int x) {
       return peri.getSwitch(x);
+    }
+    
+    public boolean getLowerSound(int x) {
+      return peri.getLowerSound(x);
     }
 }

@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import practicum.TestPeri;
+import practicum.PeriBoard;
 
 public class GameScreen extends ScreenAdapter {
   SpriteBatch batch;
@@ -17,10 +17,10 @@ public class GameScreen extends ScreenAdapter {
   World world;
   Runner runner1, runner2;
   Sound themeSound, startSound;
-  TestPeri peri;
+  PeriBoard peri;
 
   GameScreen(BlowrunningGame blowrunningGame) {
-    peri = new TestPeri();
+    peri = new PeriBoard();
     world = new World(blowrunningGame);
     batch = blowrunningGame.batch;
     runner1 = world.getRunner(1);
