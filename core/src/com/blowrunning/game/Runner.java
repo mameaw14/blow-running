@@ -30,9 +30,9 @@ public class Runner implements Entity {
     sprite.setSize(17, 17);
   }
   
-  public void updatePosition() {
+  public void updatePosition(float speed) {
     if (checkDistance() != 2) {
-        position.x++;
+        position.x += speed;
     }
   }
   
@@ -53,7 +53,7 @@ public class Runner implements Entity {
   
   public int checkDistance() {
     
-    if (position.x == 622) {       //finished line
+    if (position.x >= 622) {       //finished line
       return 2;
     }
     else {                              //do nothing
