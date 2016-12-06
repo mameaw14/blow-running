@@ -49,7 +49,8 @@ public class TestPeri
       return sum() / 2F;
     }
     public void update() {
-      boolean sw = peri.getSwitch();
+      boolean sw = peri.getLowerSound();
+      System.out.println(sw);
       q.add(sw);
       s = sum();
     }
