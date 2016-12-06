@@ -57,4 +57,7 @@ public class TestPeri
     public void dispose() {
       McuBoard.cleanupUsb();
     }
+    public boolean getSwitch() {
+      return peri.getSwitch();
+    }
 }
