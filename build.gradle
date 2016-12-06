@@ -40,6 +40,18 @@ project(":desktop") {
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+        compile files(
+			'lib/commons-lang3-3.2.1.jar',
+			'lib/jbox2d-library-2.3.1.jar',
+			'lib/libusb4java-1.2.0-linux-arm.jar',
+			'lib/libusb4java-1.2.0-linux-x86.jar',
+			'lib/libusb4java-1.2.0-linux-x86_64.jar',
+			'lib/libusb4java-1.2.0-osx-x86.jar',
+			'lib/libusb4java-1.2.0-osx-x86_64.jar',
+			'lib/libusb4java-1.2.0-windows-x86.jar',
+			'lib/libusb4java-1.2.0-windows-x86_64.jar',
+			'lib/usb4java-1.2.0.jar'
+		)
     }
 }
 
@@ -50,6 +62,18 @@ project(":core") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+        compile files(
+			'lib/commons-lang3-3.2.1.jar',
+			'lib/jbox2d-library-2.3.1.jar',
+			'lib/libusb4java-1.2.0-linux-arm.jar',
+			'lib/libusb4java-1.2.0-linux-x86.jar',
+			'lib/libusb4java-1.2.0-linux-x86_64.jar',
+			'lib/libusb4java-1.2.0-osx-x86.jar',
+			'lib/libusb4java-1.2.0-osx-x86_64.jar',
+			'lib/libusb4java-1.2.0-windows-x86.jar',
+			'lib/libusb4java-1.2.0-windows-x86_64.jar',
+			'lib/usb4java-1.2.0.jar'
+		)
     }
 }
 

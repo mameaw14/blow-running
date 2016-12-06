@@ -1,0 +1,8 @@
+{
+    "sourcePath": [
+        "core/src",
+        "core/src/test/java"
+    ],
+    "classPathFile": "core/build/classpath.txt",
+    "outputDirectory": "core/build/vscode-classes"
+}
