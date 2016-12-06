@@ -71,10 +71,10 @@ public class GameScreen extends ScreenAdapter {
     if (Gdx.input.isKeyPressed(Input.Keys.K)) { //activate lane2 item
       runner2.activateLaneItem();
     }
-    if (peri.getSwitch()) { //runner1 activate global item
+    if (peri.getSwitch(1)) { //runner1 activate global item
       world.activateGlobalItem(1);
     }
-    if (Gdx.input.isKeyPressed(Input.Keys.H)) { //runner2 activate global item
+    if (peri.getSwitch(2)) { //runner2 activate global item
       world.activateGlobalItem(2);
     }
   }

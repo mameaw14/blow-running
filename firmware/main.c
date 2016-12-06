@@ -6,9 +6,12 @@
 #include "peri.h"
 #include "usbdrv.h"
 
-#define RQ_GET_SWITCH      0
-#define RQ_GET_UPPER_SOUND 1
-#define RQ_GET_LOWER_SOUND 2
+#define RQ_GET_SWITCH       0
+#define RQ_GET_UPPER_SOUND  1
+#define RQ_GET_LOWER_SOUND  2
+#define RQ_GET_SWITCH2      3
+#define RQ_GET_UPPER_SOUND2 4
+#define RQ_GET_LOWER_SOUND2 5
 
 /* ------------------------------------------------------------------------- */
 /* ----------------------------- USB interface ----------------------------- */
@@ -19,12 +22,22 @@ usbMsgLen_t usbFunctionSetup(uint8_t data[8])
 	static uint16_t light;
 
     /* declared as static so they stay valid when usbFunctionSetup returns */
-    static uint8_t switch_state;  
+    static uint8_t switch_state;
+	
+    if (rq->bRequest <3) {
 
         switch_state = !(PINC&(1 << rq->bRequest));
 
         /* point usbMsgPtr to the data to be returned to host */
         usbMsgPtr = &switch_state;
+    }
+    else {
+
+        switch_state = !(PINB&(1 << rq->bRequest-3));
+
+        /* point usbMsgPtr to the data to be returned to host */
+        usbMsgPtr = &switch_state;
+    }
 
         /* return the number of bytes of data to be returned to host */
         return 1;
