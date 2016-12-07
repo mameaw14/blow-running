@@ -25,17 +25,19 @@ public class Maps implements Entity {
     map.add(new Props("flag", 600F));
     map.add(new Props("flag", 800F));
     map.add(new Props("flag", 1000F));
-    map.add(new Props("lane_item1", 200F));
-    //map.add(new Props("lane_item1", 400F));
-    //map.add(new Props("lane_item1", 600F));
-    
-//    if (Math.random()<0.5) {
-//      map.add(new Props("lane_item1", 200F));
-//    }
-//    else {
-//      map.add(new Props("lane_item2", 200F));
-//    }
+    map.add(new Props(randomItem(), 200F));
+    map.add(new Props(randomItem(), 400F));
+    map.add(new Props(randomItem(), 600F));
   } 
+  
+  private String randomItem(){
+    if (Math.random()<0.5) {
+      return "lane_item1";
+    }
+    else {
+      return "lane_item2";
+    }
+  }
   
   @Override
   public void render(float delta) {
