@@ -25,7 +25,7 @@ public class Maps implements Entity {
     map.put(600, new Props("flag"));
     map.put(800, new Props("flag"));
     map.put(1000, new Props("flag"));
-    map.put(200, new Props("lane_item"));
+    map.put(200, new Props("lane_item1"));
   }
   
   @Override

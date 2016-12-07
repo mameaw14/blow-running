@@ -3,7 +3,7 @@ package com.blowrunning.game;
 public class Props {
   Obj lane_1, lane_2;
   Props(String str) {
-    if("lane_item".equals(str)) {
+    if("lane_item1".equals(str) || "lane_item2".equals(str)) {
       lane_1 = new Obj(str, 3);
       lane_2 = new Obj(str, 4);
     } else {
