@@ -24,7 +24,7 @@ public class Maps implements Entity {
     map.add(new Props("flag", 600F));
     map.add(new Props("flag", 800F));
     map.add(new Props("flag", 1000F));
-    map.add(new Props("lane_item", 200F));
+    map.add(new Props("lane_item1", 200F));
   }
   
   @Override

@@ -1,7 +1,7 @@
 package com.blowrunning.game;
 
 public class Props {
-  float FOS = 50F;
+  float FOS = 100F;
   Obj lane_1, lane_2;
   float dist;
   Props(String str, float dist) {
@@ -20,10 +20,10 @@ public class Props {
     return lane_2;
   }
   void render(float delta, float dis1, float dis2) {
-    if(dist - dis1 < 50) {
+    if(dist - dis1 < FOS) {
       lane_1.render(delta, (dist - dis1) / FOS);
     }
-    if(dist - dis2 < 50) {
+    if(dist - dis2 < FOS) {
       lane_2.render(delta, (dist - dis2) / FOS);
     }
   }

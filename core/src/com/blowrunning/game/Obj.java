@@ -37,7 +37,7 @@ public class Obj{
       isOut = true;
       return;
     }
-    System.out.println(direction.x);
+    //System.out.println(direction.x);
     sprite.setScale(1 - scale);
     sprite.setPosition((1-scale) * direction.x * (XCONST+100) + Xpoint, scale * CONST);
     sprite.draw(batch);
