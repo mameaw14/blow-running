@@ -40,9 +40,16 @@ public class Runner implements Entity {
   public void render(float delta) {
     sprite.setPosition(position.x, position.y);
     sprite.draw(batch);
-    if (laneitem != null) laneitem.render(delta);
+    updateLaneItem(delta);
   }
   
+  void updateLaneItem(float delta) {
+    if (laneitem != null) {
+        if (!laneitem.isValid()) {
+          laneitem = null;
+        }
+    }
+  }
   public Vector2 getPosition() {
     return position;
   }
@@ -61,17 +68,16 @@ public class Runner implements Entity {
     }
   }
   
-  void getLaneItem() {
+  void initLaneItem() {
     laneitem = new LaneItem(number);
+    world.entities.add(laneitem);
   }
   
   public void activateLaneItem() {
     if (laneitem != null) {
-      world.entities.remove(laneitem);
       //.... what to do
       
       System.out.println("runner " + number + " activate lane item");
-      laneitem = null;
     }
   }
   

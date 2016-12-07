@@ -14,7 +14,7 @@ public class GameScreen extends ScreenAdapter {
   SpriteBatch batch;
   Sprite sprite, sttb;
   Texture img, bg, statusbar;
-  World world;
+  static World world;
   Runner runner1, runner2;
   Sound themeSound, startSound;
   PeriBoard peri;
@@ -55,8 +55,24 @@ public class GameScreen extends ScreenAdapter {
   }
 
   private void input (float delta) {
-    runner1.updatePosition(peri.getSpeed(1));
-    runner2.updatePosition(peri.getSpeed(2));
+//    runner1.updatePosition(peri.getSpeed(1));
+//    runner2.updatePosition(peri.getSpeed(2));
+//    
+//    if (peri.getLowerSound(1)) { //activate lane1 item
+//      runner1.activateLaneItem();
+//    }
+//    if (peri.getLowerSound(2)) { //activate lane2 item
+//      runner2.activateLaneItem();
+//    }
+//    if (peri.getSwitch(1)) { //runner1 activate global item
+//      world.activateGlobalItem(1);
+//    }
+//    if (peri.getSwitch(2)) { //runner2 activate global item
+//      world.activateGlobalItem(2);
+//    }
+    runner1.updatePosition(1);
+    runner2.updatePosition(1);
+    
     if (Gdx.input.isKeyPressed(Input.Keys.A)) { //runner1 run
       runner1.updatePosition(1);
     }
@@ -68,13 +84,17 @@ public class GameScreen extends ScreenAdapter {
     }
     if (Gdx.input.isKeyPressed(Input.Keys.K)) { //activate lane2 item
       runner2.activateLaneItem();
-    }
-    if (peri.getSwitch(1)) { //runner1 activate global item
+}
+    if (Gdx.input.isKeyPressed(Input.Keys.G)) { //runner1 activate global item
       world.activateGlobalItem(1);
     }
-    if (peri.getSwitch(2)) { //runner2 activate global item
+    if (Gdx.input.isKeyPressed(Input.Keys.H)) { //runner2 activate global item
       world.activateGlobalItem(2);
     }
+  }
+  
+  public static World getWorld() {
+    return world;
   }
 }
 

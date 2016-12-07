@@ -8,7 +8,6 @@ public class Item implements Entity {
   
   int VALID_TIME = 5;
   protected Sprite sprite;
-  boolean is_activated = false;
   SpriteBatch batch;
   float elapse_time;
   
@@ -24,15 +23,19 @@ public class Item implements Entity {
   
   @Override
   public void render(float delta) {
-    if (elapse_time <= 3 && (int)(elapse_time*10) % 5 == 0) ;
+    if (!isValid()) {
+      GameScreen.getWorld().entities.remove(this);
+      return;
+    }
+    if (elapse_time <= 3 && (int)(elapse_time * 10) % 5 == 0) ;
     else {
       sprite.draw(batch);
     }
     elapse_time -= delta;
   }
   
-  public boolean isActivated() {
-    return is_activated;
+  public boolean isValid() {
+    return elapse_time > 0;
   }
 
 }
