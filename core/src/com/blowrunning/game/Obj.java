@@ -33,21 +33,12 @@ public class Obj{
   public void render(float delta, float scale) {
     float CONST = 250F;
     if (isOut) return;
-    if (("lane_item1".equals(str) || "lane_item2".equals(str) ) && sprite.getY() <= 250) {
-      if ("lane_item1".equals(str)) {
-        World.getRunner(lane - 2).initLaneItem(1);
-      }
-      else if ("lane_item2".equals(str)) {
-        World.getRunner(lane - 2).initLaneItem(2);
-      }
-      isOut = true;
-      return;
-    }
+    
     sprite.setScale(1 - scale);
     sprite.setPosition((1-scale) * direction.x * (XCONST + 200) + Xpoint, scale * CONST + 130);
     sprite.draw(batch);
     
-    if ( ("lane_item1".equals(str) ) && (sprite.getY() <= 250F) ) {
+    if ( ( "lane_item1".equals(str) || "lane_item2".equals(str) ) && (sprite.getY() <= 250F) ) {
       World.getRunner(lane - 2).initLaneItem(1);
       isOut = true;
     }

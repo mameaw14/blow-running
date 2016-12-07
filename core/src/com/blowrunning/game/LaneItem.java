@@ -10,9 +10,9 @@ public class LaneItem extends Item{
     
     //sprite.setScale(1F);
     if (lane == 1) {
-      sprite.translate(-BlowrunningGame.WIDTH / 4, -180);
+      sprite.translate(-BlowrunningGame.WIDTH / 4, -80);
     } else {
-      sprite.translate(BlowrunningGame.WIDTH / 4, -180);
+      sprite.translate(BlowrunningGame.WIDTH / 4, -80);
     }
   }
 }

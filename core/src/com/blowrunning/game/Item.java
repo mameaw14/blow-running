@@ -17,7 +17,7 @@ public class Item implements Entity {
     
     sprite = new Sprite(img);
     sprite.setOriginCenter();
-    sprite.setPosition(BlowrunningGame.WIDTH / 2 - sprite.getOriginX(), 500);
+    sprite.setPosition(BlowrunningGame.WIDTH / 2 - sprite.getOriginX(), 400);
     elapse_time = VALID_TIME;
   }
   
