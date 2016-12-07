@@ -39,7 +39,12 @@ public class Obj{
     sprite.draw(batch);
     
     if ( ( "lane_item1".equals(str) || "lane_item2".equals(str) ) && (sprite.getY() <= 250F) ) {
-      World.getRunner(lane - 2).initLaneItem(1);
+      if ("lane_item1".equals(str)) {
+        World.getRunner(lane - 2).initLaneItem(1);
+      }
+      if ("lane_item2".equals(str)) {
+        World.getRunner(lane - 2).initLaneItem(2);
+      }
       isOut = true;
     }
   }

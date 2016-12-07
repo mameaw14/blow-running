@@ -38,20 +38,18 @@ public class Runner implements Entity {
   }
   
   public void updatePosition(float speed) {
-    if (number == 1)
-      System.out.println(usingItem);
     if (checkDistance() != 2) {
       if (!usingItem) {
         position.x += speed;
       }
       else if (usingItem && type ==1){
         position.x += speed*2;
+        count++;
       }
     }
-    count++;
+    
     if (count >= 200) {
       usingItem = false;
-      System.out.println(count);
       count = 0;
     }
   }
