@@ -4,21 +4,29 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Runner implements Entity {
+  private Timer timer;
   private Vector2 position;
   Sprite sprite;
   SpriteBatch batch;
   Texture runnerImg;
   int number;
   int type;
+  int count;
+  boolean usingItem;
   World world;
   LaneItem laneitem;
   
   public Runner (int x, int y, World world, int number) {
+    count = 0;
+    timer = new Timer();
     this.number = number;
     this.world = world;
     position = new Vector2 (x, y);
+    usingItem = false;
     this.batch = BlowrunningGame.batch;
     if (number == 1) {
       runnerImg = new Texture("runner1.png");
@@ -32,8 +40,21 @@ public class Runner implements Entity {
   }
   
   public void updatePosition(float speed) {
+    if (number == 1)
+      System.out.println(usingItem);
     if (checkDistance() != 2) {
+      if (!usingItem) {
         position.x += speed;
+      }
+      else if (usingItem && type ==1){
+        position.x += speed*2;
+      }
+    }
+    count++;
+    if (count >= 200) {
+      usingItem = false;
+      System.out.println(count);
+      count = 0;
     }
   }
   
@@ -81,8 +102,8 @@ public class Runner implements Entity {
   
   public void activateLaneItem() {
     if (laneitem != null) {
-      //.... what to do
-      
+      usingItem = true;
+      //timer.schedule(new fasterTask(),0,3000000);
       System.out.println("runner " + number + " activate lane item");
       laneitem = null;
     }
@@ -92,4 +113,15 @@ public class Runner implements Entity {
     //... what to do
     System.out.println("runner " + number + " activate global item");
   }
+
+  private class fasterTask extends TimerTask {
+
+    @Override
+    public void run() {
+      usingItem = false;
+      System.out.println("Do");
+    }
+  }
+  
+  
 }

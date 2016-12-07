@@ -33,7 +33,12 @@ public class Obj{
     float CONST = 380F;
     if (isOut) return;
     if (("lane_item1".equals(str) || "lane_item2".equals(str) ) && sprite.getY() <= 250) {
-      World.getRunner(lane - 2).initLaneItem(1);
+      if ("lane_item1".equals(str)) {
+        World.getRunner(lane - 2).initLaneItem(1);
+      }
+      else if ("lane_item2".equals(str)) {
+        World.getRunner(lane - 2).initLaneItem(2);
+      }
       isOut = true;
       return;
     }
