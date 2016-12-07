@@ -4,22 +4,27 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import java.util.Timer;
 
 public class Runner implements Entity {
   private Vector2 position;
   Sprite sprite;
   SpriteBatch batch;
   Texture runnerImg;
+  World world;
   int number;
   int type;
   final int STARTPX = 36, FINISHPX = 622;
-  World world;
+  int count;
+  boolean usingItem;
   LaneItem laneitem;
   
   public Runner (int x, int y, World world, int number) {
+    count = 0;
     this.number = number;
     this.world = world;
     position = new Vector2 (x, y);
+    usingItem = false;
     this.batch = BlowrunningGame.batch;
     if (number == 1) {
       runnerImg = new Texture("runner1.png");
@@ -33,8 +38,21 @@ public class Runner implements Entity {
   }
   
   public void updatePosition(float speed) {
+    if (number == 1)
+      System.out.println(usingItem);
     if (checkDistance() != 2) {
+      if (!usingItem) {
         position.x += speed;
+      }
+      else if (usingItem && type ==1){
+        position.x += speed*2;
+      }
+    }
+    count++;
+    if (count >= 200) {
+      usingItem = false;
+      System.out.println(count);
+      count = 0;
     }
   }
   
@@ -82,8 +100,7 @@ public class Runner implements Entity {
   
   public void activateLaneItem() {
     if (laneitem != null) {
-      //.... what to do
-      
+      usingItem = true;
       System.out.println("runner " + number + " activate lane item");
       laneitem = null;
     }
@@ -92,5 +109,5 @@ public class Runner implements Entity {
   public void activateGlobalItem() {
     //... what to do
     System.out.println("runner " + number + " activate global item");
-  }
+  }  
 }

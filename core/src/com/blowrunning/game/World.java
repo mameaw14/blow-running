@@ -61,4 +61,13 @@ public class World {
         globalItem = null;
       }
     }
+    
+    public void activateLaneItem(int player, int type) {
+      if (type == 1) {
+        
+      }
+      else {
+        
+      }
+    }
 }

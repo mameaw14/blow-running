@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 
 public class Maps implements Entity {
+  private int type = 0;
   ArrayList<Props> map;
   SpriteBatch batch;
   Sprite sprite;
@@ -26,7 +27,18 @@ public class Maps implements Entity {
     map.add(new Props("flag", 600F));
     map.add(new Props("flag", 800F));
     map.add(new Props("flag", 1000F));
-    map.add(new Props("lane_item1", 200F));
+    map.add(new Props(randomItem(), 200F));
+    map.add(new Props(randomItem(), 400F));
+    map.add(new Props(randomItem(), 600F));
+  } 
+  
+  private String randomItem(){
+    if (Math.random()<0.5) {
+      return "lane_item1";
+    }
+    else {
+      return "lane_item2";
+    }
   }
   
   @Override
