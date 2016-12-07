@@ -3,15 +3,16 @@ package com.blowrunning.game;
 public class LaneItem extends Item{
   int lane;
   
-  LaneItem(int lane) {
-    super("lane_item.png");
+  LaneItem(int lane, String type) {
+    super(type+".png");
+    
     this.lane = lane;
     
-    sprite.setScale(0.5F);
+    //sprite.setScale(1F);
     if (lane == 1) {
-      sprite.translate(-BlowrunningGame.WIDTH / 4, -150);
+      sprite.translate(-BlowrunningGame.WIDTH / 4, -180);
     } else {
-      sprite.translate(BlowrunningGame.WIDTH / 4, -150);
+      sprite.translate(BlowrunningGame.WIDTH / 4, -180);
     }
   }
 }

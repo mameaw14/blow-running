@@ -32,8 +32,8 @@ public class Obj{
   public void render(float delta, float scale) {
     float CONST = 380F;
     if (isOut) return;
-    if ("lane_item".equals(str) && sprite.getY() <= 250) {
-      World.getRunner(lane - 2).initLaneItem();
+    if (("lane_item1".equals(str) || "lane_item2".equals(str) ) && sprite.getY() <= 250) {
+      World.getRunner(lane - 2).initLaneItem(1);
       isOut = true;
       return;
     }

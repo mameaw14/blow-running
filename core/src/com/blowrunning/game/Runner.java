@@ -11,6 +11,7 @@ public class Runner implements Entity {
   SpriteBatch batch;
   Texture runnerImg;
   int number;
+  int type;
   World world;
   LaneItem laneitem;
   
@@ -73,8 +74,9 @@ public class Runner implements Entity {
     position.x = dis / 1.428F;
   }
   
-  void initLaneItem() {
-    laneitem = new LaneItem(number);
+  void initLaneItem(int type) {
+    this.type = type;
+    laneitem = new LaneItem(number, "lane_item"+type);
   }
   
   public void activateLaneItem() {
