@@ -70,12 +70,12 @@ public class World {
       }
     }
     
-    public void activateLaneItem(int player, int type) {
-      if (type == 1) {
-        
+    public void activateLaneItem(int player) {      //only lane_item2
+      if (player == 1) {
+        runner2.changeSlowStatus();
       }
       else {
-        
+        runner1.changeSlowStatus();
       }
     }
 }

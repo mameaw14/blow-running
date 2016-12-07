@@ -30,6 +30,7 @@ public class Maps implements Entity {
     map.add(new Props(randomItem(), 200F));
     map.add(new Props(randomItem(), 400F));
     map.add(new Props(randomItem(), 600F));
+    map.add(new Props(randomItem(), 800F));
   } 
   
   private String randomItem(){

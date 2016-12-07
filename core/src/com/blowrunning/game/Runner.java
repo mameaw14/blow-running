@@ -17,6 +17,7 @@ public class Runner implements Entity {
   final int STARTPX = 36, FINISHPX = 622;
   int count;
   boolean usingItem;
+  boolean isSlow;
   LaneItem laneitem;
   
   public Runner (int x, int y, World world, int number) {
@@ -25,6 +26,7 @@ public class Runner implements Entity {
     this.world = world;
     position = new Vector2 (x, y);
     usingItem = false;
+    isSlow = false;
     this.batch = BlowrunningGame.batch;
     if (number == 1) {
       runnerImg = new Texture("runner1.png");
@@ -39,11 +41,14 @@ public class Runner implements Entity {
   
   public void updatePosition(float speed) {
     if (checkDistance() != 2) {
-      if (!usingItem) {
-        position.x += speed;
+      if (!usingItem && isSlow) {
+        speed *= 0.5;
+        count++;
       }
-      else if (usingItem && type ==1){
-        position.x += speed*2;
+      else if (usingItem) {
+        if (type ==1) {
+          speed *= 2;
+        }
         count++;
       }
     }
@@ -52,6 +57,8 @@ public class Runner implements Entity {
       usingItem = false;
       count = 0;
     }
+    System.out.println("Runner: "+number+" || type: "+type+" || isSlow: "+isSlow);
+    position.x += speed;
   }
   
   @Override
@@ -98,6 +105,9 @@ public class Runner implements Entity {
   public void activateLaneItem() {
     if (laneitem != null) {
       usingItem = true;
+      if (type == 2) {
+        world.activateLaneItem(number);
+      }
       System.out.println("runner " + number + " activate lane item");
       laneitem = null;
     }
@@ -112,4 +122,9 @@ public class Runner implements Entity {
     }
     System.out.println("runner " + number + " activate global item");
   }  
+  
+  public void changeSlowStatus() {
+    isSlow = !isSlow;
+    count = 0;
+  }
 }
