@@ -33,6 +33,7 @@ public class World {
     public void randomGlobalItem(){ 
       if (globalItem != null) {
         if (!globalItem.isValid()) {
+          entities.remove(globalItem);
           globalItem = null;
         }
         return;

@@ -48,6 +48,7 @@ public class Runner implements Entity {
         if (!laneitem.isValid()) {
           laneitem = null;
         }
+        else laneitem.render(delta);
     }
   }
   public Vector2 getPosition() {
@@ -70,7 +71,6 @@ public class Runner implements Entity {
   
   void initLaneItem() {
     laneitem = new LaneItem(number);
-    world.entities.add(laneitem);
   }
   
   public void activateLaneItem() {

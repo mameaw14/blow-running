@@ -23,10 +23,6 @@ public class Item implements Entity {
   
   @Override
   public void render(float delta) {
-    if (!isValid()) {
-      GameScreen.getWorld().entities.remove(this);
-      return;
-    }
     if (elapse_time <= 3 && (int)(elapse_time * 10) % 5 == 0) ;
     else {
       sprite.draw(batch);
