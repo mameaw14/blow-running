@@ -78,7 +78,6 @@ public class Runner implements Entity {
   }
   
   public int checkDistance() {
-    
     if (position.x >= FINISHPX) {       //finished line
       return 2;
     }
@@ -105,7 +104,12 @@ public class Runner implements Entity {
   }
   
   public void activateGlobalItem() {
-    //... what to do
+    if (position.x < 100 + STARTPX) {
+      position.x = STARTPX;
+    }
+    else {
+      position.x -= 100;
+    }
     System.out.println("runner " + number + " activate global item");
   }  
 }

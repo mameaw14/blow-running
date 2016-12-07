@@ -11,8 +11,10 @@ public class World {
     private Maps map;
     GlobalItem globalItem;
     ArrayList<Entity> entities; 
+    int num;
     
     World (BlowrunningGame blowrunningGame){
+      num = 0;
       entities = new ArrayList<Entity>();
       runner1 = new Runner(36, 661, this, 1);
       runner2 = new Runner(36, 661, this, 2);
@@ -56,7 +58,13 @@ public class World {
     
     public void activateGlobalItem(int number) {
       if (globalItem != null) {
-        getRunner(number).activateGlobalItem();
+        if (number == 1) {
+          int num = 2;
+        }
+        else {
+          int num = 1;
+        }
+        getRunner(num).activateGlobalItem();
         entities.remove(globalItem);
         globalItem = null;
       }
