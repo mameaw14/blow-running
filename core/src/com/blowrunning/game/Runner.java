@@ -12,6 +12,7 @@ public class Runner implements Entity {
   Texture runnerImg;
   int number;
   int type;
+  final int STARTPX = 36, FINISHPX = 622;
   World world;
   LaneItem laneitem;
   
@@ -56,13 +57,13 @@ public class Runner implements Entity {
     return position;
   }
   
-  public int getDistance() {
-    return (int)(position.x * 1.428);
+  public float getDistance() {
+    return (position.x - STARTPX) / 0.586F;
   }
   
   public int checkDistance() {
     
-    if (position.x >= 622) {       //finished line
+    if (position.x >= FINISHPX) {       //finished line
       return 2;
     }
     else {                              //do nothing
