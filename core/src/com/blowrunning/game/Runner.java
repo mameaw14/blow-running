@@ -78,6 +78,7 @@ public class Runner implements Entity {
       //.... what to do
       
       System.out.println("runner " + number + " activate lane item");
+      laneitem = null;
     }
   }
   
