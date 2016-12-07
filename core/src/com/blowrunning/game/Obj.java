@@ -8,10 +8,12 @@ import com.badlogic.gdx.math.Vector2;
 public class Obj{
   final float SPEED = 1F;
   Sprite sprite;
-  float scale = 0.1F;
-  Vector2 direction;
+  float scale;
+  private Vector2 direction;
   String str;
   int lane;
+  float Xpoint;
+  float XCONST;
   boolean isOut = false;
   static final SpriteBatch batch = BlowrunningGame.batch;
   
@@ -27,36 +29,41 @@ public class Obj{
     setupLane(lane);
   }
   
-  public void render(float delta, float speed) {
+  public void render(float delta, float scale) {
+    float CONST = 380F;
     if (isOut) return;
     if ("lane_item".equals(str) && sprite.getY() <= 250) {
       World.getRunner(lane - 2).initLaneItem();
       isOut = true;
       return;
     }
-    sprite.setScale(scale);
-    sprite.translate(direction.x * speed, direction.y * speed);
+    System.out.println(direction.x);
+    sprite.setScale(1 - scale);
+    sprite.setPosition((1-scale) * direction.x * (XCONST+100) + Xpoint, scale * CONST);
     sprite.draw(batch);
     
-    if(scale <= 1) {
-    scale += speed / 250F;
-    }
+    
+    if (sprite.getY() <= 0) setupLane(lane);
   }
   
   public final void setupLane(int lane){
+    scale = 0.1F;
     if(lane == 1) {
       direction.setAngle(-155F);
-      sprite.setPosition(BlowrunningGame.WIDTH / 2 - sprite.getOriginX() - 50, 380);
+      Xpoint = BlowrunningGame.WIDTH / 2 - sprite.getOriginX() - 50;
+      XCONST = Xpoint;
     } else if (lane == 2) {
       direction.setAngle(160F - 180F);
-      sprite.setPosition(BlowrunningGame.WIDTH / 2 - sprite.getOriginX() + 50, 380);
+      Xpoint = BlowrunningGame.WIDTH / 2 - sprite.getOriginX() + 50;
+      XCONST = 700 - Xpoint;
     } else if (lane == 3) {
       direction.setAngle(-130F);
-      sprite.setPosition(BlowrunningGame.WIDTH / 2 - sprite.getOriginX() - 20, 380);
+      Xpoint = BlowrunningGame.WIDTH / 2 - sprite.getOriginX() - 20;
+      XCONST = Xpoint;
     } else if (lane == 4) {
       direction.setAngle(130F - 180F);
-      sprite.setPosition(BlowrunningGame.WIDTH / 2 - sprite.getOriginX() + 20, 380);
-      
+      Xpoint = BlowrunningGame.WIDTH / 2 - sprite.getOriginX() + 20;
+      XCONST = 700-Xpoint;
     }
   }
 }

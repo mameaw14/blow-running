@@ -17,7 +17,7 @@ public class GameScreen extends ScreenAdapter {
   static World world;
   Runner runner1, runner2;
   Sound themeSound, startSound;
-  PeriBoard peri;
+  public static PeriBoard peri;
 
   GameScreen(BlowrunningGame blowrunningGame) {
     peri = new PeriBoard();
@@ -55,8 +55,8 @@ public class GameScreen extends ScreenAdapter {
   }
 
   private void input (float delta) {
-//    runner1.updatePosition(peri.getSpeed(1));
-//    runner2.updatePosition(peri.getSpeed(2));
+//    runner1.updatePosition(runner1.getSpeed());
+//    runner2.updatePosition(runner2.getSpeed());
 //    
 //    if (peri.getLowerSound(1)) { //activate lane1 item
 //      runner1.activateLaneItem();
@@ -74,7 +74,7 @@ public class GameScreen extends ScreenAdapter {
     runner2.updatePosition(1);
     
     if (Gdx.input.isKeyPressed(Input.Keys.A)) { //runner1 run
-      runner1.updatePosition(1);
+      runner1.setDistance(200);
     }
     if (Gdx.input.isKeyPressed(Input.Keys.L)) { //runner2 run
       runner2.updatePosition(1);

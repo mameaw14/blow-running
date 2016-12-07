@@ -2,11 +2,10 @@ package com.blowrunning.game;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.ArrayList;
 
 public class Maps implements Entity {
-  Map<Integer, Props> map;
+  ArrayList<Props> map;
   SpriteBatch batch;
   Sprite sprite;
   World world;
@@ -14,35 +13,27 @@ public class Maps implements Entity {
   Maps(World world) {
     this.world = world;
     batch = BlowrunningGame.batch;
-    map = new TreeMap<Integer, Props>();
-    map.put(100, new Props("grass"));
-    map.put(340, new Props("grass"));
-    map.put(270, new Props("grass"));
-    map.put(500, new Props("grass"));
-    map.put(700, new Props("grass"));
-    map.put(200, new Props("flag"));
-    map.put(400, new Props("flag"));
-    map.put(600, new Props("flag"));
-    map.put(800, new Props("flag"));
-    map.put(1000, new Props("flag"));
-    map.put(200, new Props("lane_item"));
+    map = new ArrayList<Props>();
+    map.add(new Props("grass", 100F));
+    map.add(new Props("grass", 340F));
+    map.add(new Props("grass", 270F));
+    map.add(new Props("grass", 500F));
+    map.add(new Props("grass", 700F));
+    map.add(new Props("flag", 200F));
+    map.add(new Props("flag", 400F));
+    map.add(new Props("flag", 600F));
+    map.add(new Props("flag", 800F));
+    map.add(new Props("flag", 1000F));
+    map.add(new Props("lane_item", 200F));
   }
   
   @Override
   public void render(float delta) {
-    float speed = 1F;
-    int dis1, dis2;
+    float dis1, dis2;
     dis1 = world.getRunner(1).getDistance();
     dis2 = world.getRunner(2).getDistance();
-    for (int key : map.keySet()) {
-      if(key < dis1 + 100) {
-        Props props = map.get(key);
-        props.getObj(1).render(delta, speed);
-      } 
-      if (key < dis2 + 100) {
-        Props props = map.get(key);
-        props.getObj(2).render(delta, speed);
-      }
+    for (Props prop : map) {
+      prop.render(delta, dis1, dis2);
     }
   }
 }

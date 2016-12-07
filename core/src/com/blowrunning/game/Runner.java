@@ -69,6 +69,10 @@ public class Runner implements Entity {
     }
   }
   
+  public void setDistance(int dis) {
+    position.x = dis / 1.428F;
+  }
+  
   void initLaneItem() {
     laneitem = new LaneItem(number);
   }
