@@ -1,6 +1,8 @@
 
 package com.blowrunning.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 
@@ -9,6 +11,7 @@ public class World {
     private static Runner runner1, runner2;
     private BlowrunningGame blowrunningGame;
     private Maps map;
+    Sound popSound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
     GlobalItem globalItem;
     ArrayList<Entity> entities; 
     int num;
@@ -41,6 +44,7 @@ public class World {
         return;
       }
       if (Math.random() < 0.005F ) {
+        popSound.play();
         System.out.println("init Glob item");
         globalItem = new GlobalItem();
         entities.add(globalItem);

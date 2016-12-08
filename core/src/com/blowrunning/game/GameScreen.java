@@ -12,7 +12,7 @@ import practicum.PeriBoard;
 
 public class GameScreen extends ScreenAdapter {
   SpriteBatch batch;
-  Sprite sprite, sttb;
+  Sprite sprite;
   Texture img, bg, statusbar;
   static World world;
   Runner runner1, runner2;
@@ -26,9 +26,7 @@ public class GameScreen extends ScreenAdapter {
     runner1 = world.getRunner(1);
     runner2 = world.getRunner(2);
     bg = new Texture("bg.png");
-    statusbar = new Texture("statusbar.png");
     sprite = new Sprite(bg);
-    sttb = new Sprite(statusbar);
     sprite.setOriginCenter();
     startSound = Gdx.audio.newSound(Gdx.files.internal("start.wav"));
     startSound.play();

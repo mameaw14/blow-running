@@ -1,5 +1,7 @@
 package com.blowrunning.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,6 +15,9 @@ public class Runner implements Entity {
   Sprite p2onFire = new Sprite(new Texture("bg2onfire.png"));
   Sprite p1Froze = new Sprite(new Texture("bg1froze.png"));
   Sprite p2Froze = new Sprite(new Texture("bg2froze.png"));
+  Sound itemSound = Gdx.audio.newSound(Gdx.files.internal("item.wav"));
+  Sound fireSound = Gdx.audio.newSound(Gdx.files.internal("fire.mp3"));
+  Sound freezeSound = Gdx.audio.newSound(Gdx.files.internal("freeze.mp3"));
   Texture runnerImg;
   World world;
   int number;
@@ -43,7 +48,11 @@ public class Runner implements Entity {
   }
   
   public void updatePosition(float speed) {
-    if (checkDistance() != 2) {
+    int checkDistance = checkDistance();
+    if(checkDistance == 3) {
+      position.x = STARTPX;
+    }
+    if (checkDistance != 2) {
       if (!usingItem && isSlow) {
         speed *= 0.5;
         count++;
@@ -101,6 +110,9 @@ public class Runner implements Entity {
     if (position.x >= FINISHPX) {       //finished line
       return 2;
     }
+    else if (position.x < STARTPX) {
+      return 3;
+    }
     else {                              //do nothing
       return 0;
     }
@@ -111,6 +123,7 @@ public class Runner implements Entity {
   }
   
   void initLaneItem(int type) {
+    itemSound.play();
     this.type = type;
     laneitem = new LaneItem(number, "lane_item"+type);
   }
@@ -120,6 +133,9 @@ public class Runner implements Entity {
       usingItem = true;
       if (type == 2) {
         world.activateLaneItem(number);
+        freezeSound.play();
+      } else {
+        fireSound.play();
       }
       System.out.println("runner " + number + " activate lane item");
       laneitem = null;
