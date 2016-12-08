@@ -15,26 +15,33 @@ public class Runner implements Entity {
   Sprite p2onFire = new Sprite(new Texture("bg2onfire.png"));
   Sprite p1Froze = new Sprite(new Texture("bg1froze.png"));
   Sprite p2Froze = new Sprite(new Texture("bg2froze.png"));
+  Sprite p1JumpBack = new Sprite(new Texture("bg1jumpback.png"));
+  Sprite p2JumpBack = new Sprite(new Texture("bg2jumpback.png"));
   Sound itemSound = Gdx.audio.newSound(Gdx.files.internal("item.wav"));
   Sound fireSound = Gdx.audio.newSound(Gdx.files.internal("fire.mp3"));
   Sound freezeSound = Gdx.audio.newSound(Gdx.files.internal("freeze.mp3"));
+  Sound jumpSound = Gdx.audio.newSound(Gdx.files.internal("jumpback.wav"));
   Texture runnerImg;
   World world;
   int number;
   int type;
   final int STARTPX = 36, FINISHPX = 622;
   int count;
+  int countGb;
   boolean usingItem;
   boolean isSlow;
+  boolean globalItem;
   LaneItem laneitem;
   
   public Runner (int x, int y, World world, int number) {
     count = 0;
+    countGb = 0;
     this.number = number;
     this.world = world;
     position = new Vector2 (x, y);
     usingItem = false;
     isSlow = false;
+    globalItem = false;
     this.batch = BlowrunningGame.batch;
     if (number == 1) {
       runnerImg = new Texture("runner1.png");
@@ -71,7 +78,7 @@ public class Runner implements Entity {
       usingItem = false;
       count = 0;
     }
-    System.out.println("Runner: "+number+" || type: "+type+" || isSlow: "+isSlow);
+    //System.out.println("Runner: "+number+" || type: "+type+" || isSlow: "+isSlow);
   }
   
   @Override
@@ -87,6 +94,15 @@ public class Runner implements Entity {
       else if (type == 2) {
         if(number == 1) p2Froze.draw(batch);
         if(number == 2) p1Froze.draw(batch);
+      }
+    }
+    if (globalItem) {
+      if(number == 1) p1JumpBack.draw(batch);
+      if(number == 2) p2JumpBack.draw(batch);
+      countGb++;
+      if(countGb >= 15) {
+        globalItem = false;
+        countGb = 0;
       }
     }
   }
@@ -144,6 +160,8 @@ public class Runner implements Entity {
   }
   
   public void activateGlobalItem() {
+    jumpSound.play();
+    globalItem = true;
     if (position.x < 100 + STARTPX) {
       position.x = STARTPX;
     }
