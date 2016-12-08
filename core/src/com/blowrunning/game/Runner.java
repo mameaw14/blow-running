@@ -17,8 +17,6 @@ public class Runner implements Entity {
   Sprite p2Froze = new Sprite(new Texture("bg2froze.png"));
   Sprite p1JumpBack = new Sprite(new Texture("bg1jumpback.png"));
   Sprite p2JumpBack = new Sprite(new Texture("bg2jumpback.png"));
-  Sprite p1Finish = new Sprite(new Texture("bg1win.png"));
-  Sprite p2Finish = new Sprite(new Texture("bg2win.png"));
   Sound itemSound = Gdx.audio.newSound(Gdx.files.internal("item.wav"));
   Sound fireSound = Gdx.audio.newSound(Gdx.files.internal("fire.mp3"));
   Sound freezeSound = Gdx.audio.newSound(Gdx.files.internal("freeze.mp3"));
@@ -78,10 +76,10 @@ public class Runner implements Entity {
       }
       position.x += speed;
       if(isSpriteUp){   //animate runner
-        runnerSprite.translateY(speed / 3);
+        runnerSprite.translateY(speed / 2);
         if (runnerSprite.getY() > 0) isSpriteUp = false;
       } else {
-        runnerSprite.translateY(- speed / 3);
+        runnerSprite.translateY(- speed / 2);
         if (runnerSprite.getY() < -3) isSpriteUp = true;
       }
     }
@@ -118,10 +116,6 @@ public class Runner implements Entity {
         countGb = 0;
       }
     }
-    if (finish) {
-      if(number == 1) p1Finish.draw(batch);
-      if(number == 2) p2Finish.draw(batch);
-    }
   }
   
   void updateLaneItem(float delta) {
@@ -143,13 +137,11 @@ public class Runner implements Entity {
   public int checkDistance() {
     if (position.x >= FINISHPX) {       //finished line
       finish = true;
+      world.playerWin(number);
       return 2;
     }
     else if (position.x < STARTPX) {
       return 3;
-    }
-    else if (world.checkFinish(number)) {
-      return 2;
     }
     else {                              //do nothing
       return 0;

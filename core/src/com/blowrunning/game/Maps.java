@@ -38,6 +38,7 @@ public class Maps implements Entity {
   }
   
   public void addObj() {
+    System.out.println("addobj");
     for (float i = 0; i < 1000 ;i += 11) {
       map.add(new Props("grass", i));
     }

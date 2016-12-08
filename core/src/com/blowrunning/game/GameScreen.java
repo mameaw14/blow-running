@@ -16,12 +16,20 @@ public class GameScreen extends ScreenAdapter {
   Texture img, bg, statusbar;
   static World world;
   Runner runner1, runner2;
-  Sound themeSound, startSound, endSound;
+  Sound endSound = Gdx.audio.newSound(Gdx.files.internal("End.mp3"));
+  Sound themeSound = Gdx.audio.newSound(Gdx.files.internal("sound.mp3"));
+  Sound startSound = Gdx.audio.newSound(Gdx.files.internal("start.wav"));
   public static PeriBoard peri;
   boolean fin;
 
   GameScreen(BlowrunningGame blowrunningGame) {
+    startSound.play();
+    endSound = Gdx.audio.newSound(Gdx.files.internal("End.mp3"));
+    themeSound = Gdx.audio.newSound(Gdx.files.internal("sound.mp3"));
+    startSound = Gdx.audio.newSound(Gdx.files.internal("start.wav"));
     fin = false;
+    themeSound.loop();
+    
     peri = new PeriBoard();
     world = new World(blowrunningGame);
     batch = blowrunningGame.batch;
@@ -30,11 +38,13 @@ public class GameScreen extends ScreenAdapter {
     bg = new Texture("bg2.png");
     sprite = new Sprite(bg);
     sprite.setOriginCenter();
-    reset();
+    
   }
 
   @Override
   public void render (float delta) {
+    System.out.println(fin);
+    
     peri.update();
     input(delta);
     Gdx.gl.glClearColor((float)204/256, (float)102/256, 0, 1);
@@ -52,7 +62,7 @@ public class GameScreen extends ScreenAdapter {
   }
 
   private void input (float delta) {
-    runner1.updatePosition(1F);
+    runner1.updatePosition(0.4F);
     runner2.updatePosition(peri.getSpeed(2));
     
     if (peri.getLowerSound(1)) { //activate lane1 item
@@ -68,7 +78,7 @@ public class GameScreen extends ScreenAdapter {
       world.activateGlobalItem(2);
     }
     
-    if (!fin && (world.checkFinish(1) || world.checkFinish(2))) {
+    if (!fin && world.isFinished()) {
       themeSound.stop();
       endSound.play();
       fin = true;
@@ -88,10 +98,7 @@ public class GameScreen extends ScreenAdapter {
     runner1.reset();
     runner2.reset();
     world.reset();
-    endSound = Gdx.audio.newSound(Gdx.files.internal("End.mp3"));
-    startSound = Gdx.audio.newSound(Gdx.files.internal("start.wav"));
     startSound.play();
-    themeSound = Gdx.audio.newSound(Gdx.files.internal("sound.mp3"));
     themeSound.loop();
     fin = false;
   }

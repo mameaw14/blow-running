@@ -8,7 +8,6 @@ public class LaneItem extends Item{
     
     this.lane = lane;
     
-    //sprite.setScale(1F);
     if (lane == 1) {
       sprite.translate(-BlowrunningGame.WIDTH / 4, -80);
     } else {

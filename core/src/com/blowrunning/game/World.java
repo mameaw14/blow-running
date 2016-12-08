@@ -3,21 +3,26 @@ package com.blowrunning.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 
 public class World {
-    public SpriteBatch batch;
+    public SpriteBatch batch = BlowrunningGame.batch;
     private static Runner runner1, runner2;
     private BlowrunningGame blowrunningGame;
+    Sprite p2Finish = new Sprite(new Texture("bg2.png"));
+    Sprite p1Finish = new Sprite(new Texture("bg1win.png"));
     private Maps map;
     Sound popSound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
     GlobalItem globalItem;
     ArrayList<Entity> entities; 
-    int num;
+    int gameFinished; // 0 = not finish, 1/2 = player i win
     
     World (BlowrunningGame blowrunningGame){
-      num = 0;
+      System.out.println("world");
+      gameFinished = 0;
       entities = new ArrayList<Entity>();
       runner1 = new Runner(36, 661, this, 1);
       runner2 = new Runner(36, 661, this, 2);
@@ -29,29 +34,33 @@ public class World {
     }
     
     public void render(float delta) {
-      
-      if (globalItem != null) {
-        if (!globalItem.isValid() || !(!checkFinish(1) && !checkFinish(2))) {
-          entities.remove(globalItem);
-          globalItem = null;
+      if (gameFinished == 0) {
+        randomGlobalItem();
+        for (Entity x : entities) {
+          x.render(delta);
         }
       } else {
-        randomGlobalItem();
+        if (gameFinished == 1) {
+          p1Finish.draw(batch);
+        } else {
+          p2Finish.draw(batch);
+        }
       }
-      for (Entity x : entities) {
-        x.render(delta);
-      }
+      
     }
     
     public void randomGlobalItem(){
-      if (!checkFinish(1) && !checkFinish(2)) {
-        if (Math.random() < 0.005F ) {
+      if (globalItem != null) {
+        if (!globalItem.isValid()) {
+          entities.remove(globalItem);
+          globalItem = null;
+        }
+      } else if (Math.random() < 0.005F ) {
           popSound.play();
           System.out.println("init Glob item");
           globalItem = new GlobalItem();
           entities.add(globalItem);
         }
-      }
     }
     
     public static Runner getRunner(int x) {
@@ -64,15 +73,13 @@ public class World {
     }
     
     public void activateGlobalItem(int number) {
-      int num;
       if (globalItem != null) {
         if (number == 1) {
-          num = 2;
+          getRunner(2).activateGlobalItem();
         }
         else {
-          num = 1;
+          getRunner(1).activateGlobalItem();
         }
-        getRunner(num).activateGlobalItem();
         entities.remove(globalItem);
         globalItem = null;
       }
@@ -86,13 +93,16 @@ public class World {
         runner1.changeSlowStatus();
       }
     }
+    public boolean isFinished() {
+      return gameFinished != 0;
+    }
     
-    public boolean checkFinish(int number) {
-      if (number == 1) return runner2.checkFinished();
-      else return runner1.checkFinished();
+    public void playerWin(int i) {
+      gameFinished = i;
     }
     
     public void reset() {
+      gameFinished = 0;
       map.addObj();
     }
 }
