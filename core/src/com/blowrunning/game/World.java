@@ -35,9 +35,7 @@ public class World {
           entities.remove(globalItem);
           globalItem = null;
         }
-        //return;
-      } 
-      else {
+      } else {
         randomGlobalItem();
       }
       for (Entity x : entities) {
