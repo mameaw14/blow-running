@@ -90,6 +90,7 @@ public class Runner implements Entity {
       isSlow = false;
       usingItem = false;
       count = 0;
+      type = 0;
     }
   }
   

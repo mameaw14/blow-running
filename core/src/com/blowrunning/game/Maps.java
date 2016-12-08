@@ -14,7 +14,6 @@ public class Maps implements Entity {
   Maps(World world) {
     this.world = world;
     batch = BlowrunningGame.batch;
-    map = new ArrayList<Props>();
     addObj();
   } 
   
@@ -38,6 +37,7 @@ public class Maps implements Entity {
   }
   
   public void addObj() {
+    map = new ArrayList<Props>();
     for (float i = 0; i < 1000 ;i += 11) {
       map.add(new Props("grass", i));
     }
