@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Item implements Entity {
   
-  int VALID_TIME = 5;
+  int VALID_TIME = 3;
   protected Sprite sprite;
   SpriteBatch batch;
   float elapse_time;
@@ -23,7 +23,7 @@ public class Item implements Entity {
   
   @Override
   public void render(float delta) {
-    if (elapse_time <= 3 && (int)(elapse_time * 10) % 5 == 0) ;
+    if (elapse_time <= 2 && (int)(elapse_time * 10) % 5 == 0) ;
     else {
       sprite.draw(batch);
     }

@@ -4,12 +4,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import java.util.Timer;
 
 public class Runner implements Entity {
   private Vector2 position;
   Sprite sprite;
   SpriteBatch batch;
+  Sprite p1onFire = new Sprite(new Texture("bg1onfire.png"));
+  Sprite p2onFire = new Sprite(new Texture("bg2onfire.png"));
+  Sprite p1Froze = new Sprite(new Texture("bg1froze.png"));
+  Sprite p2Froze = new Sprite(new Texture("bg2froze.png"));
   Texture runnerImg;
   World world;
   int number;
@@ -51,6 +54,7 @@ public class Runner implements Entity {
         }
         count++;
       }
+      position.x += speed;
     }
     
     if (count >= 200) {
@@ -58,7 +62,6 @@ public class Runner implements Entity {
       count = 0;
     }
     System.out.println("Runner: "+number+" || type: "+type+" || isSlow: "+isSlow);
-    position.x += speed;
   }
   
   @Override
@@ -66,6 +69,16 @@ public class Runner implements Entity {
     sprite.setPosition(position.x, position.y);
     sprite.draw(batch);
     updateLaneItem(delta);
+    if (usingItem) {
+      if (type == 1) {
+        if(number == 1) p1onFire.draw(batch);
+        if(number == 2) p2onFire.draw(batch);
+      }
+      else if (type == 2) {
+        if(number == 1) p2Froze.draw(batch);
+        if(number == 2) p1Froze.draw(batch);
+      }
+    }
   }
   
   void updateLaneItem(float delta) {
@@ -121,7 +134,7 @@ public class Runner implements Entity {
       position.x -= 100;
     }
     System.out.println("runner " + number + " activate global item");
-  }  
+  }
   
   public void changeSlowStatus() {
     isSlow = !isSlow;

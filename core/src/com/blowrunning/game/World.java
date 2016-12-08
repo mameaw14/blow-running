@@ -20,9 +20,9 @@ public class World {
       runner2 = new Runner(36, 661, this, 2);
       map = new Maps(this);
       this.blowrunningGame = blowrunningGame;
+      entities.add(map);
       entities.add(runner1);
       entities.add(runner2);
-      entities.add(map);
     }
     
     public void render(float delta) {
@@ -40,7 +40,7 @@ public class World {
         }
         return;
       }
-      if (Math.random() < 0.01 ) {
+      if (Math.random() < 0.005F ) {
         System.out.println("init Glob item");
         globalItem = new GlobalItem();
         entities.add(globalItem);
@@ -57,12 +57,13 @@ public class World {
     }
     
     public void activateGlobalItem(int number) {
+      int num;
       if (globalItem != null) {
         if (number == 1) {
-          int num = 2;
+          num = 2;
         }
         else {
-          int num = 1;
+          num = 1;
         }
         getRunner(num).activateGlobalItem();
         entities.remove(globalItem);

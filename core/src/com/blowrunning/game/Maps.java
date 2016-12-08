@@ -15,13 +15,9 @@ public class Maps implements Entity {
     this.world = world;
     batch = BlowrunningGame.batch;
     map = new ArrayList<Props>();
-    map.add(new Props("grass", 50F));
-    map.add(new Props("grass", 75F));
-    map.add(new Props("grass", 100F));
-    map.add(new Props("grass", 340F));
-    map.add(new Props("grass", 270F));
-    map.add(new Props("grass", 500F));
-    map.add(new Props("grass", 700F));
+    for (float i = 0; i < 1000 ;i += 11) {
+      map.add(new Props("grass", i));
+    }
     map.add(new Props("flag", 200F));
     map.add(new Props("flag", 400F));
     map.add(new Props("flag", 600F));

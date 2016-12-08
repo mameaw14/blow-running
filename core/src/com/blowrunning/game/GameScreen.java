@@ -55,16 +55,14 @@ public class GameScreen extends ScreenAdapter {
   }
 
   private void input (float delta) {
-    runner1.updatePosition(peri.getSpeed(1));
+    runner1.updatePosition(0.4F);
     runner2.updatePosition(peri.getSpeed(2));
     
     if (peri.getLowerSound(1)) { //activate lane1 item
-      System.out.println("1 yes");
       runner1.activateLaneItem();
     }
     if (peri.getLowerSound(2)) { //activate lane2 item
       runner2.activateLaneItem();
-      System.out.println("2 yes");
     }
     if (peri.getSwitch(1)) { //runner1 activate global item
       world.activateGlobalItem(1);
