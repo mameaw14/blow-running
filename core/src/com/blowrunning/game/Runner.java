@@ -77,7 +77,7 @@ public class Runner implements Entity {
         count++;
       }
       position.x += speed;
-      if(isSpriteUp){
+      if(isSpriteUp){   //animate runner
         runnerSprite.translateY(speed / 3);
         if (runnerSprite.getY() > 0) isSpriteUp = false;
       } else {
