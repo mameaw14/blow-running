@@ -83,4 +83,9 @@ public class World {
         runner1.changeSlowStatus();
       }
     }
+    
+    public boolean checkFinish(int number) {
+      if (number == 1) return runner2.checkFinished();
+      else return runner1.checkFinished();
+    }
 }

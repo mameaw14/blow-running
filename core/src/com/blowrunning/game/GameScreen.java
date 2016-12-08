@@ -16,10 +16,12 @@ public class GameScreen extends ScreenAdapter {
   Texture img, bg, statusbar;
   static World world;
   Runner runner1, runner2;
-  Sound themeSound, startSound;
+  Sound themeSound, startSound, endSound;
   public static PeriBoard peri;
+  boolean fin;
 
   GameScreen(BlowrunningGame blowrunningGame) {
+    fin = false;
     peri = new PeriBoard();
     world = new World(blowrunningGame);
     batch = blowrunningGame.batch;
@@ -68,27 +70,13 @@ public class GameScreen extends ScreenAdapter {
     if (peri.getSwitch(2)) { //runner2 activate global item
       world.activateGlobalItem(2);
     }
-//    runner1.updatePosition(1);
-//    runner2.updatePosition(1);
-//    
-//    if (Gdx.input.isKeyPressed(Input.Keys.A)) { //runner1 run
-//      runner1.setDistance(200);
-//    }
-//    if (Gdx.input.isKeyPressed(Input.Keys.L)) { //runner2 run
-//      runner2.updatePosition(1);
-//    }
-//    if (Gdx.input.isKeyPressed(Input.Keys.S)) { //activate lane1 item
-//      runner1.activateLaneItem();
-//    }
-//    if (Gdx.input.isKeyPressed(Input.Keys.K)) { //activate lane2 item
-//      runner2.activateLaneItem();
-//}
-//    if (Gdx.input.isKeyPressed(Input.Keys.G)) { //runner1 activate global item
-//      world.activateGlobalItem(1);
-//    }
-//    if (Gdx.input.isKeyPressed(Input.Keys.H)) { //runner2 activate global item
-//      world.activateGlobalItem(2);
-//    }
+    
+    if (!fin && (world.checkFinish(1) || world.checkFinish(2))) {
+      themeSound.stop();
+      endSound = Gdx.audio.newSound(Gdx.files.internal("End.mp3"));
+      endSound.play();
+      fin = true;
+    }
   }
   
   public static World getWorld() {
