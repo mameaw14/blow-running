@@ -27,7 +27,7 @@ public class GameScreen extends ScreenAdapter {
     batch = blowrunningGame.batch;
     runner1 = world.getRunner(1);
     runner2 = world.getRunner(2);
-    bg = new Texture("bg.png");
+    bg = new Texture("bg2.png");
     sprite = new Sprite(bg);
     sprite.setOriginCenter();
     reset();
@@ -52,7 +52,7 @@ public class GameScreen extends ScreenAdapter {
   }
 
   private void input (float delta) {
-    runner1.updatePosition(3F);
+    runner1.updatePosition(1F);
     runner2.updatePosition(peri.getSpeed(2));
     
     if (peri.getLowerSound(1)) { //activate lane1 item

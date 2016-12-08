@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Runner implements Entity {
   private Vector2 position;
-  Sprite sprite;
+  Sprite sprite, runnerSprite;
   SpriteBatch batch;
   Sprite p1onFire = new Sprite(new Texture("bg1onfire.png"));
   Sprite p2onFire = new Sprite(new Texture("bg2onfire.png"));
@@ -23,7 +23,6 @@ public class Runner implements Entity {
   Sound fireSound = Gdx.audio.newSound(Gdx.files.internal("fire.mp3"));
   Sound freezeSound = Gdx.audio.newSound(Gdx.files.internal("freeze.mp3"));
   Sound jumpSound = Gdx.audio.newSound(Gdx.files.internal("jumpback.wav"));
-  Texture runnerImg;
   World world;
   int number;
   int type;
@@ -35,6 +34,7 @@ public class Runner implements Entity {
   boolean globalItem;
   boolean finish;
   LaneItem laneitem;
+  boolean isSpriteUp;
   
   public Runner (int x, int y, World world, int number) {
     count = 0;
@@ -46,14 +46,16 @@ public class Runner implements Entity {
     isSlow = false;
     globalItem = false;
     finish = false;
+    isSpriteUp = true;
     this.batch = BlowrunningGame.batch;
     if (number == 1) {
-      runnerImg = new Texture("runner1.png");
+      sprite = new Sprite(new Texture("runner1.png"));
+      runnerSprite = new Sprite(new Texture("blue.png"));
     }
     else {
-      runnerImg = new Texture("runner2.png");
+      sprite = new Sprite(new Texture("runner2.png"));
+      runnerSprite = new Sprite(new Texture("red.png"));
     }
-    sprite = new Sprite(runnerImg);
     sprite.setOriginCenter();
     sprite.setSize(17, 17);
   }
@@ -75,6 +77,13 @@ public class Runner implements Entity {
         count++;
       }
       position.x += speed;
+      if(isSpriteUp){
+        runnerSprite.translateY(speed / 3);
+        if (runnerSprite.getY() > 0) isSpriteUp = false;
+      } else {
+        runnerSprite.translateY(- speed / 3);
+        if (runnerSprite.getY() < -3) isSpriteUp = true;
+      }
     }
     
     if (count >= 200) {
@@ -82,13 +91,13 @@ public class Runner implements Entity {
       usingItem = false;
       count = 0;
     }
-    //System.out.println("Runner: "+number+" || type: "+type+" || isSlow: "+isSlow);
   }
   
   @Override
   public void render(float delta) {
     sprite.setPosition(position.x, position.y);
     sprite.draw(batch);
+    runnerSprite.draw(batch);
     updateLaneItem(delta);
     if (usingItem) {
       if (type == 1) {
