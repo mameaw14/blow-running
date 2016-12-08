@@ -91,4 +91,8 @@ public class World {
       if (number == 1) return runner2.checkFinished();
       else return runner1.checkFinished();
     }
+    
+    public void reset() {
+      map.addObj();
+    }
 }

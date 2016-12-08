@@ -87,6 +87,7 @@ public class GameScreen extends ScreenAdapter {
   public void reset(){
     runner1.reset();
     runner2.reset();
+    world.reset();
     endSound = Gdx.audio.newSound(Gdx.files.internal("End.mp3"));
     startSound = Gdx.audio.newSound(Gdx.files.internal("start.wav"));
     startSound.play();

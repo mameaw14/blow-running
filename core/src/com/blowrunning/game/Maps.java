@@ -15,18 +15,7 @@ public class Maps implements Entity {
     this.world = world;
     batch = BlowrunningGame.batch;
     map = new ArrayList<Props>();
-    for (float i = 0; i < 1000 ;i += 11) {
-      map.add(new Props("grass", i));
-    }
-    map.add(new Props("flag", 200F));
-    map.add(new Props("flag", 400F));
-    map.add(new Props("flag", 600F));
-    map.add(new Props("flag", 800F));
-    map.add(new Props("flag", 1000F));
-    map.add(new Props(randomItem(), 200F));
-    map.add(new Props(randomItem(), 400F));
-    map.add(new Props(randomItem(), 600F));
-    map.add(new Props(randomItem(), 800F));
+    addObj();
   } 
   
   private String randomItem(){
@@ -46,5 +35,20 @@ public class Maps implements Entity {
     for (Props prop : map) {
       prop.render(delta, dis1, dis2);
     }
+  }
+  
+  public void addObj() {
+    for (float i = 0; i < 1000 ;i += 11) {
+      map.add(new Props("grass", i));
+    }
+    map.add(new Props("flag", 200F));
+    map.add(new Props("flag", 400F));
+    map.add(new Props("flag", 600F));
+    map.add(new Props("flag", 800F));
+    map.add(new Props("flag", 1000F));
+    map.add(new Props(randomItem(), 200F));
+    map.add(new Props(randomItem(), 400F));
+    map.add(new Props(randomItem(), 600F));
+    map.add(new Props(randomItem(), 800F));
   }
 }

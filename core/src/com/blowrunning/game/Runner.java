@@ -201,5 +201,6 @@ public class Runner implements Entity {
     usingItem = false;
     globalItem = false;
     finish = false;
+    laneitem = null;
   }
 }
