@@ -30,10 +30,7 @@ public class GameScreen extends ScreenAdapter {
     bg = new Texture("bg.png");
     sprite = new Sprite(bg);
     sprite.setOriginCenter();
-    startSound = Gdx.audio.newSound(Gdx.files.internal("start.wav"));
-    startSound.play();
-    themeSound = Gdx.audio.newSound(Gdx.files.internal("sound.mp3"));
-    themeSound.loop();
+    reset();
   }
 
   @Override
@@ -73,14 +70,29 @@ public class GameScreen extends ScreenAdapter {
     
     if (!fin && (world.checkFinish(1) || world.checkFinish(2))) {
       themeSound.stop();
-      endSound = Gdx.audio.newSound(Gdx.files.internal("End.mp3"));
       endSound.play();
       fin = true;
+    }
+    
+    if (Gdx.input.isKeyPressed(Input.Keys.ENTER) && fin) {
+      endSound.stop();
+      reset();
     }
   }
   
   public static World getWorld() {
     return world;
+  }
+  
+  public void reset(){
+    runner1.reset();
+    runner2.reset();
+    endSound = Gdx.audio.newSound(Gdx.files.internal("End.mp3"));
+    startSound = Gdx.audio.newSound(Gdx.files.internal("start.wav"));
+    startSound.play();
+    themeSound = Gdx.audio.newSound(Gdx.files.internal("sound.mp3"));
+    themeSound.loop();
+    fin = false;
   }
 }
 

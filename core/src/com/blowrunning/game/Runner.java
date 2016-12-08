@@ -191,4 +191,15 @@ public class Runner implements Entity {
   public boolean checkFinished(){
     return finish;
   }
+  
+  public void reset() {
+    count = 0;
+    isSlow = false;
+    position.x = STARTPX;
+    type = 0;
+    countGb = 0;
+    usingItem = false;
+    globalItem = false;
+    finish = false;
+  }
 }
