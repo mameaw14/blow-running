@@ -21,7 +21,6 @@ public class World {
     int gameFinished; // 0 = not finish, 1/2 = player i win
     
     World (BlowrunningGame blowrunningGame){
-      System.out.println("world");
       gameFinished = 0;
       entities = new ArrayList<Entity>();
       runner1 = new Runner(36, 661, this, 1);
@@ -29,8 +28,8 @@ public class World {
       map = new Maps(this);
       this.blowrunningGame = blowrunningGame;
       entities.add(map);
-      entities.add(runner1);
       entities.add(runner2);
+      entities.add(runner1);
     }
     
     public void render(float delta) {

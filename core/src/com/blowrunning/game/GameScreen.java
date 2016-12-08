@@ -42,9 +42,7 @@ public class GameScreen extends ScreenAdapter {
   }
 
   @Override
-  public void render (float delta) {
-    System.out.println(fin);
-    
+  public void render (float delta) {    
     peri.update();
     input(delta);
     Gdx.gl.glClearColor((float)204/256, (float)102/256, 0, 1);
@@ -62,7 +60,7 @@ public class GameScreen extends ScreenAdapter {
   }
 
   private void input (float delta) {
-    runner1.updatePosition(0.4F);
+    runner1.updatePosition(peri.getSpeed(1));
     runner2.updatePosition(peri.getSpeed(2));
     
     if (peri.getLowerSound(1)) { //activate lane1 item

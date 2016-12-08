@@ -60,7 +60,6 @@ public class Obj{
       Xpoint = BlowrunningGame.WIDTH / 2 - sprite.getOriginX() + 50;
       XCONST = 700 - Xpoint;
     } else if (lane == 3) {
-      System.out.println("lane3");
       direction.setAngle(-100F);
       Xpoint = BlowrunningGame.WIDTH / 2 - sprite.getOriginX() - 20;
       XCONST = Xpoint;

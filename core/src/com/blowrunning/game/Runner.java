@@ -103,10 +103,10 @@ public class Runner implements Entity {
         if(number == 1) p1onFire.draw(batch);
         if(number == 2) p2onFire.draw(batch);
       }
-      else if (type == 2) {
-        if(number == 1) p2Froze.draw(batch);
-        if(number == 2) p1Froze.draw(batch);
-      }
+    }
+    if (isSlow) {
+        if(number == 1) p1Froze.draw(batch);
+        if(number == 2) p2Froze.draw(batch);
     }
     if (globalItem) {
       if(number == 1) p1JumpBack.draw(batch);
