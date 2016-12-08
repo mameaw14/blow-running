@@ -31,12 +31,13 @@ public class World {
     public void render(float delta) {
       
       if (globalItem != null) {
-        if (!globalItem.isValid()) {
+        if (!globalItem.isValid() || !(!checkFinish(1) && !checkFinish(2))) {
           entities.remove(globalItem);
           globalItem = null;
         }
-        return;
-      } else {
+        //return;
+      } 
+      else {
         randomGlobalItem();
       }
       for (Entity x : entities) {
@@ -44,12 +45,14 @@ public class World {
       }
     }
     
-    public void randomGlobalItem(){ 
-      if (Math.random() < 0.005F ) {
-        popSound.play();
-        System.out.println("init Glob item");
-        globalItem = new GlobalItem();
-        entities.add(globalItem);
+    public void randomGlobalItem(){
+      if (!checkFinish(1) && !checkFinish(2)) {
+        if (Math.random() < 0.005F ) {
+          popSound.play();
+          System.out.println("init Glob item");
+          globalItem = new GlobalItem();
+          entities.add(globalItem);
+        }
       }
     }
     

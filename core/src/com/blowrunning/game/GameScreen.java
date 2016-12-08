@@ -55,7 +55,7 @@ public class GameScreen extends ScreenAdapter {
   }
 
   private void input (float delta) {
-    runner1.updatePosition(peri.getSpeed(1));
+    runner1.updatePosition(3F);
     runner2.updatePosition(peri.getSpeed(2));
     
     if (peri.getLowerSound(1)) { //activate lane1 item
