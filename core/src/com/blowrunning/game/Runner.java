@@ -67,6 +67,7 @@ public class Runner implements Entity {
     }
     
     if (count >= 200) {
+      isSlow = false;
       usingItem = false;
       count = 0;
     }
@@ -153,7 +154,7 @@ public class Runner implements Entity {
   }
   
   public void changeSlowStatus() {
-    isSlow = !isSlow;
+    isSlow = true;
     count = 0;
   }
 }
