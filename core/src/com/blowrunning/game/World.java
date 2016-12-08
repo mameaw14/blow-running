@@ -29,20 +29,22 @@ public class World {
     }
     
     public void render(float delta) {
-      randomGlobalItem();
-      for (Entity x : entities) {
-        x.render(delta);
-      }
-    }
-    
-    public void randomGlobalItem(){ 
+      
       if (globalItem != null) {
         if (!globalItem.isValid()) {
           entities.remove(globalItem);
           globalItem = null;
         }
         return;
+      } else {
+        randomGlobalItem();
       }
+      for (Entity x : entities) {
+        x.render(delta);
+      }
+    }
+    
+    public void randomGlobalItem(){ 
       if (Math.random() < 0.005F ) {
         popSound.play();
         System.out.println("init Glob item");
