@@ -176,11 +176,11 @@ public class Runner implements Entity {
   public void activateGlobalItem() {
     jumpSound.play();
     globalItem = true;
-    if (position.x < 100 + STARTPX) {
+    if (position.x < 80 + STARTPX) {
       position.x = STARTPX;
     }
     else {
-      position.x -= 100;
+      position.x -= 80;
     }
     System.out.println("runner " + number + " activate global item");
   }

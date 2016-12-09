@@ -53,7 +53,7 @@ public class PeriBoard
     }
     
     public float getSpeed(int i) {
-      return sum(i) / 10F;
+      return sum(i) / 7F;
     }
     
     public void update() {
