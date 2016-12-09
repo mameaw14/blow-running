@@ -12,7 +12,7 @@ public class World {
     public SpriteBatch batch = BlowrunningGame.batch;
     private static Runner runner1, runner2;
     private BlowrunningGame blowrunningGame;
-    Sprite p2Finish = new Sprite(new Texture("bg2.png"));
+    Sprite p2Finish = new Sprite(new Texture("bg2win.png"));
     Sprite p1Finish = new Sprite(new Texture("bg1win.png"));
     private Maps map;
     Sound popSound = Gdx.audio.newSound(Gdx.files.internal("pop.mp3"));
