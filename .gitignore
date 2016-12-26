@@ -73,3 +73,8 @@ Thumbs.db
 ## vscode
 classpath.txt
 .vscode/
+
+## C
+*.o
+*.elf
+*.hex
